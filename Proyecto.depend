@@ -1,0 +1,133 @@
+# depslib dependency file v1.0
+1386461757 source:c:\users\guillermo sandoval\desktop\progra3\proyecto\agua.cpp
+	"Agua.h"
+
+1386403544 c:\users\guillermo sandoval\desktop\progra3\proyecto\agua.h
+	"Enemigo.h"
+
+1386222109 c:\users\guillermo sandoval\desktop\progra3\proyecto\plataforma.h
+	<vector>
+	"SDL.h"
+	"SDL_image.h"
+	"Personaje.h"
+
+1386461219 c:\users\guillermo sandoval\desktop\progra3\proyecto\personaje.h
+	"SDL.h"
+	"SDL_image.h"
+	<vector>
+
+1386400988 source:c:\users\guillermo sandoval\desktop\progra3\proyecto\enemigo .cpp
+	"Enemigo .h"
+
+1386400988 c:\users\guillermo sandoval\desktop\progra3\proyecto\enemigo .h
+	"Personaje.h"
+	"SDL.h"
+	"SDL_image.h"
+	<vector>
+
+1386464548 source:c:\users\guillermo sandoval\desktop\progra3\proyecto\personaje.cpp
+	"Personaje.h"
+
+1386223140 source:c:\users\guillermo sandoval\desktop\progra3\proyecto\plataforma.cpp
+	"Plataforma.h"
+
+1386264926 source:c:\users\guillermo sandoval\desktop\progra3\proyecto\plataforma1.cpp
+	"Plataforma1.h"
+
+1386264926 c:\users\guillermo sandoval\desktop\progra3\proyecto\plataforma1.h
+	"Plataforma.h"
+
+1386461755 source:c:\users\guillermo sandoval\desktop\progra3\proyecto\plataforma2.cpp
+	"Plataforma2.h"
+
+1386264831 c:\users\guillermo sandoval\desktop\progra3\proyecto\plataforma2.h
+	"Plataforma.h"
+
+1386461756 source:c:\users\guillermo sandoval\desktop\progra3\proyecto\plataforma3.cpp
+	"Plataforma3.h"
+
+1386222109 c:\users\guillermo sandoval\desktop\progra3\proyecto\plataforma3.h
+	"Plataforma.h"
+
+1386461756 source:c:\users\guillermo sandoval\desktop\progra3\proyecto\plataforma4.cpp
+	"Plataforma4.h"
+
+1386222109 c:\users\guillermo sandoval\desktop\progra3\proyecto\plataforma4.h
+	"Plataforma.h"
+
+1386461757 source:c:\users\guillermo sandoval\desktop\progra3\proyecto\plataforma5.cpp
+	"Plataforma5.h"
+
+1386265233 c:\users\guillermo sandoval\desktop\progra3\proyecto\plataforma5.h
+	"Plataforma.h"
+
+1386461757 source:c:\users\guillermo sandoval\desktop\progra3\proyecto\plataforma6.cpp
+	"Plataforma6.h"
+
+1386222109 c:\users\guillermo sandoval\desktop\progra3\proyecto\plataforma6.h
+	"Plataforma.h"
+
+1386461757 source:c:\users\guillermo sandoval\desktop\progra3\proyecto\plataforma7.cpp
+	"Plataforma7.h"
+
+1386222109 c:\users\guillermo sandoval\desktop\progra3\proyecto\plataforma7.h
+	"Plataforma.h"
+
+1386461757 source:c:\users\guillermo sandoval\desktop\progra3\proyecto\plataforma8.cpp
+	"Plataforma8.h"
+
+1386264831 c:\users\guillermo sandoval\desktop\progra3\proyecto\plataforma8.h
+	"Plataforma.h"
+
+1386464790 source:c:\users\guillermo sandoval\desktop\progra3\proyecto\main.cpp
+	"SDL.h"
+	"SDL_image.h"
+	"SDL_ttf.h"
+	"SDL_mixer.h"
+	<iostream>
+	<vector>
+	<string>
+	<fstream>
+	"Enemigo.h"
+	"Enemigo1.h"
+	"Enemigo2.h"
+	"Enemigo3.h"
+	"Personaje.h"
+	"Plataforma.h"
+	"Plataforma1.h"
+	"Plataforma2.h"
+	"Plataforma3.h"
+	"Plataforma4.h"
+	"Plataforma5.h"
+	"Plataforma6.h"
+	"Plataforma7.h"
+	"Plataforma8.h"
+	"Agua.h"
+
+1386461846 source:c:\users\guillermo sandoval\desktop\progra3\proyecto\enemigo1.cpp
+	"Enemigo1.h"
+
+1386447098 c:\users\guillermo sandoval\desktop\progra3\proyecto\enemigo1.h
+	"Enemigo.h"
+
+1386445409 source:c:\users\guillermo sandoval\desktop\progra3\proyecto\enemigo.cpp
+	"Enemigo.h"
+
+1386445226 c:\users\guillermo sandoval\desktop\progra3\proyecto\enemigo.h
+	"Personaje.h"
+	<vector>
+	"SDL.h"
+	"SDL_image.h"
+
+1386461755 source:c:\users\guillermo sandoval\desktop\progra3\proyecto\enemigo2.cpp
+	"Enemigo2.h"
+
+1386454075 c:\users\guillermo sandoval\desktop\progra3\proyecto\enemigo2.h
+	"Enemigo.h"
+
+1386459253 source:c:\users\guillermo sandoval\desktop\progra3\proyecto\enemigo3.cpp
+	"Enemigo3.h"
+
+1386458021 c:\users\guillermo sandoval\desktop\progra3\proyecto\enemigo3.h
+	"Enemigo.h"
+
