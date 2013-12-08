@@ -19,10 +19,10 @@ y=200;
 void Plataforma5::logica(Personaje*personaje){
 
 
-if (personaje->x>=x&&personaje->x<=x+250&&personaje->y+50>=y-2&&personaje->y+50<y&&personaje->saltar==false){
+if (personaje->x+18>=x&&personaje->x+18<=x+250&&personaje->y+50>=y-2&&personaje->y+50<y&&personaje->saltar==false){
         personaje->y--;
 
-}else if (personaje->x>=x&&personaje->x<=x+250&&personaje->y+50>=y-2&&personaje->y+50<y&&
+}else if (personaje->x+18>=x&&personaje->x+18<=x+250&&personaje->y+50>=y-2&&personaje->y+50<y&&
     personaje->saltar==true){
     personaje->saltar=false;
     personaje->y--;

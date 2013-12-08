@@ -31,7 +31,7 @@ this->y=490;
   this->para_arriba=true;
 }
 int Agua::atacar(Personaje*personaje){
-if (personaje->x>=x&&personaje->x<=x+549&&personaje->y+50>=y&&personaje->y+50<=y+10){
+if (personaje->x+18>=x&&personaje->x+18<=x+549&&personaje->y+50>=y&&personaje->y+50<=y+10){
       personaje->x=0;
     personaje->y=435;
     personaje->cuadro_actual=0;

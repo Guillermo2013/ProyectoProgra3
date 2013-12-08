@@ -1,23 +1,23 @@
-#include "Enemigo3.h"
+#include "Enemigo5.h"
 
-Enemigo3::Enemigo3()
+Enemigo5::Enemigo5()
 {
-    this->x=150;
-    this->y=425;
+    this->x=700;
+    this->y=140;
     this->tiempo=0;
     this->cuadro_actual=0;
     this->para_adelante=false;
-    sprites.push_back(IMG_Load("Assests/enemigo3/emenigo3_1.png"));
-    sprites.push_back(IMG_Load("Assests/enemigo3/emenigo3_2.png"));
-    sprites.push_back(IMG_Load("Assests/enemigo3/emenigo3_3.png"));
-    sprites.push_back(IMG_Load("Assests/enemigo3/emenigo3_4.png"));
+    sprites.push_back(IMG_Load("Assests/enemigo5/enemigo5_1.png"));
+    sprites.push_back(IMG_Load("Assests/enemigo5/enemigo5_2.png"));
+    sprites.push_back(IMG_Load("Assests/enemigo5/enemigo5_3.png"));
+    sprites.push_back(IMG_Load("Assests/enemigo5/enemigo5_4.png"));
 }
 
-Enemigo3::~Enemigo3()
+Enemigo5::~Enemigo5()
 {
     //dtor
 }
-int Enemigo3::atacar(Personaje*personaje){
+int Enemigo5::atacar(Personaje*personaje){
 if (personaje->x+30==x&&personaje->y+25>y&&personaje->y+25<y+60){
      personaje->x=0;
     personaje->y=435;
@@ -30,7 +30,7 @@ if (personaje->x+30==x&&personaje->y+25>y&&personaje->y+25<y+60){
     personaje->cuadro_actual=0;
     reset();
 return -1;
-}else if (personaje->x+18>x&&personaje->x<x+40&&personaje->y==y+50){
+}else if (personaje->x+18>x&&personaje->x<x+60&&personaje->y==y+50){
  personaje->x=0;
     personaje->y=435;
     personaje->cuadro_actual=0;
@@ -40,13 +40,13 @@ return -1;
 
 return 0;
 }
-int Enemigo3::recibir_ataque(Personaje*personaje){
-if (personaje->x+18>x&&personaje->x+18<x+40&&personaje->y+40==y){
+int Enemigo5::recibir_ataque(Personaje*personaje){
+if (personaje->x+18>x&&personaje->x+18<x+60&&personaje->y+40==y){
   return 10;
 }else
 return 0;
 }
-void Enemigo3::logica(){
+void Enemigo5::logica(){
 tiempo++;
 if (para_adelante==false){
 x--;
@@ -68,16 +68,16 @@ if (tiempo==10){
 
 }
 
-if (x==0||x==-200){
+if (x==300||x==500){
     para_adelante=true;
-}else if (x==150||x==-50){
+}else if (x==499||x==700){
 para_adelante=false;
 }
 
 }
-void Enemigo3::reset(){
-this->x=150;
-    this->y=425;
+void Enemigo5::reset(){
+   this->x=700;
+    this->y=140;
     this->tiempo=0;
     this->cuadro_actual=0;
     this->para_adelante=false;

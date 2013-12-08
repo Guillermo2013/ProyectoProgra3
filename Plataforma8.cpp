@@ -16,10 +16,10 @@ x=900;
 y=49;
 }
 void Plataforma8::logica(Personaje*personaje){
-if (personaje->x>=x&&personaje->x<=x+100&&personaje->y+50>=y-2&&personaje->y+50<y&&personaje->saltar==false){
+if (personaje->x+18>=x&&personaje->x+18<=x+100&&personaje->y+50>=y-2&&personaje->y+50<y&&personaje->saltar==false){
         personaje->y--;
 
-}else if (personaje->x>=x&&personaje->x<=x+100&&personaje->y+50>=y-2&&personaje->y+50<y&&
+}else if (personaje->x+18>=x&&personaje->x+18<=x+100&&personaje->y+50>=y-2&&personaje->y+50<y&&
     personaje->saltar==true){
     personaje->saltar=false;
     personaje->y--;

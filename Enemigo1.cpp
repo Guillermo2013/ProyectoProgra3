@@ -20,6 +20,26 @@ Enemigo1::~Enemigo1()
 }
 int Enemigo1::atacar(Personaje*personaje){
 
+if (personaje->x+30==x&&personaje->y+25>y&&personaje->y+25<y+60){
+     personaje->x=0;
+    personaje->y=435;
+    personaje->cuadro_actual=0;
+    reset();
+    return -1;
+}else if (personaje->x-10==x&&personaje->y+25>y&&personaje->y+25<y+60){
+ personaje->x=0;
+    personaje->y=435;
+    personaje->cuadro_actual=0;
+    reset();
+return -1;
+}else if (personaje->x+18>x&&personaje->x<x+60&&personaje->y==y+50){
+ personaje->x=0;
+    personaje->y=435;
+    personaje->cuadro_actual=0;
+    reset();
+return -1;
+}
+
 return 0;
 }
 void Enemigo1::reset(){
@@ -49,5 +69,8 @@ void Enemigo1::logica(){
     para_abajo=false;
 }
 int Enemigo1::recibir_ataque(Personaje*personaje){
-
+if (personaje->x+18>x&&personaje->x+18<x+60&&personaje->y+40==y){
+  return 10;
+}else
+return 0;
 }

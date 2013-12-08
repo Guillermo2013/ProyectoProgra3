@@ -22,7 +22,7 @@ if (moviendose_para_arriba==true&&y<=400)
  if (y==200)
     moviendose_para_arriba=true;
 
-  if (personaje->x>=x&&personaje->x<=x+100&&personaje->y+50>=y-2&&personaje->y+50<y&&personaje->saltar==false){
+  if (personaje->x+18>=x&&personaje->x+18<=x+100&&personaje->y+50>=y-2&&personaje->y+50<y&&personaje->saltar==false){
   if (moviendose_para_arriba==false){
    personaje->y--;
    personaje->y--;
@@ -33,7 +33,7 @@ if (moviendose_para_arriba==true&&y<=400)
     personaje->y--;
 }
 
-}else if (personaje->x>=x&&personaje->x<=x+100&&personaje->y+50>=y-2&&personaje->y+50<y&&
+}else if (personaje->x+18>=x&&personaje->x+18<=x+100&&personaje->y+50>=y-2&&personaje->y+50<y&&
     personaje->saltar==true){
     personaje->saltar=false;
     personaje->y--;

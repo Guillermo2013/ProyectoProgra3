@@ -1,36 +1,36 @@
-#include "Enemigo3.h"
+#include "Enemigo4.h"
 
-Enemigo3::Enemigo3()
+Enemigo4::Enemigo4()
 {
-    this->x=150;
-    this->y=425;
+    this->x=940;
+    this->y=450;
     this->tiempo=0;
     this->cuadro_actual=0;
     this->para_adelante=false;
-    sprites.push_back(IMG_Load("Assests/enemigo3/emenigo3_1.png"));
-    sprites.push_back(IMG_Load("Assests/enemigo3/emenigo3_2.png"));
-    sprites.push_back(IMG_Load("Assests/enemigo3/emenigo3_3.png"));
-    sprites.push_back(IMG_Load("Assests/enemigo3/emenigo3_4.png"));
+    sprites.push_back(IMG_Load("Assests/emenigo4/enemigo4_1.png"));
+    sprites.push_back(IMG_Load("Assests/emenigo4/enemigo4_2.png"));
+    sprites.push_back(IMG_Load("Assests/emenigo4/enemigo4_3.png"));
+    sprites.push_back(IMG_Load("Assests/emenigo4/enemigo4_4.png"));
 }
 
-Enemigo3::~Enemigo3()
+Enemigo4::~Enemigo4()
 {
     //dtor
 }
-int Enemigo3::atacar(Personaje*personaje){
-if (personaje->x+30==x&&personaje->y+25>y&&personaje->y+25<y+60){
+int Enemigo4::atacar(Personaje*personaje){
+if (personaje->x+30==x&&personaje->y+25>y&&personaje->y+25<y+32){
      personaje->x=0;
     personaje->y=435;
     personaje->cuadro_actual=0;
     reset();
     return -1;
-}else if (personaje->x-10==x&&personaje->y+25>y&&personaje->y+25<y+60){
+}else if (personaje->x-10==x&&personaje->y+25>y&&personaje->y+25<y+32){
  personaje->x=0;
     personaje->y=435;
     personaje->cuadro_actual=0;
     reset();
 return -1;
-}else if (personaje->x+18>x&&personaje->x<x+40&&personaje->y==y+50){
+}else if (personaje->x+18>x&&personaje->x<x+60&&personaje->y==y+20){
  personaje->x=0;
     personaje->y=435;
     personaje->cuadro_actual=0;
@@ -40,13 +40,13 @@ return -1;
 
 return 0;
 }
-int Enemigo3::recibir_ataque(Personaje*personaje){
-if (personaje->x+18>x&&personaje->x+18<x+40&&personaje->y+40==y){
+int Enemigo4::recibir_ataque(Personaje*personaje){
+if (personaje->x+18>x&&personaje->x+18<x+60&&personaje->y+40==y){
   return 10;
 }else
 return 0;
 }
-void Enemigo3::logica(){
+void Enemigo4::logica(){
 tiempo++;
 if (para_adelante==false){
 x--;
@@ -68,16 +68,16 @@ if (tiempo==10){
 
 }
 
-if (x==0||x==-200){
+if (x==550||x==750){
     para_adelante=true;
-}else if (x==150||x==-50){
+}else if (x==740||x==940){
 para_adelante=false;
 }
 
 }
-void Enemigo3::reset(){
-this->x=150;
-    this->y=425;
+void Enemigo4::reset(){
+   this->x=940;
+    this->y=450;
     this->tiempo=0;
     this->cuadro_actual=0;
     this->para_adelante=false;

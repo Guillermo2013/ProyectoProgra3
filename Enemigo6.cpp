@@ -1,23 +1,23 @@
-#include "Enemigo3.h"
+#include "Enemigo6.h"
 
-Enemigo3::Enemigo3()
-{
-    this->x=150;
-    this->y=425;
+Enemigo6::Enemigo6(){
+
+    this->x=850;
+    this->y=0;
     this->tiempo=0;
     this->cuadro_actual=0;
     this->para_adelante=false;
-    sprites.push_back(IMG_Load("Assests/enemigo3/emenigo3_1.png"));
-    sprites.push_back(IMG_Load("Assests/enemigo3/emenigo3_2.png"));
-    sprites.push_back(IMG_Load("Assests/enemigo3/emenigo3_3.png"));
-    sprites.push_back(IMG_Load("Assests/enemigo3/emenigo3_4.png"));
+    sprites.push_back(IMG_Load("Assests/enemigo6/enemigo6_1.png"));
+    sprites.push_back(IMG_Load("Assests/enemigo6/enemigo6_2.png"));
+    sprites.push_back(IMG_Load("Assests/enemigo6/enemigo6_3.png"));
+    sprites.push_back(IMG_Load("Assests/enemigo6/enemigo6_4.png"));
 }
 
-Enemigo3::~Enemigo3()
+Enemigo6::~Enemigo6()
 {
     //dtor
 }
-int Enemigo3::atacar(Personaje*personaje){
+int Enemigo6::atacar(Personaje*personaje){
 if (personaje->x+30==x&&personaje->y+25>y&&personaje->y+25<y+60){
      personaje->x=0;
     personaje->y=435;
@@ -30,7 +30,7 @@ if (personaje->x+30==x&&personaje->y+25>y&&personaje->y+25<y+60){
     personaje->cuadro_actual=0;
     reset();
 return -1;
-}else if (personaje->x+18>x&&personaje->x<x+40&&personaje->y==y+50){
+}else if (personaje->x+18>x&&personaje->x<x+60&&personaje->y==y+50){
  personaje->x=0;
     personaje->y=435;
     personaje->cuadro_actual=0;
@@ -40,27 +40,29 @@ return -1;
 
 return 0;
 }
-int Enemigo3::recibir_ataque(Personaje*personaje){
-if (personaje->x+18>x&&personaje->x+18<x+40&&personaje->y+40==y){
+int Enemigo6::recibir_ataque(Personaje*personaje){
+if (personaje->x+18>x&&personaje->x+18<x+60&&personaje->y+40==y){
   return 10;
 }else
 return 0;
 }
-void Enemigo3::logica(){
+void Enemigo6::logica(){
 tiempo++;
-if (para_adelante==false){
-x--;
-    cuadro_actual=0;
-}else if (para_adelante==true){
-cuadro_actual=2;
+if (para_adelante==true){
 x++;
+y--;
+    cuadro_actual=0;
+}else if (para_adelante==false){
+cuadro_actual=2;
+x--;
+y++;
 }
 if (tiempo==10){
    cuadro_actual++;
-    if (para_adelante==false){
+    if (para_adelante==true){
         if (cuadro_actual==0)
             cuadro_actual=1;
-        }else if (para_adelante==true){
+        }else if (para_adelante==false){
        if (cuadro_actual==2)
             cuadro_actual=3;
        }
@@ -68,17 +70,17 @@ if (tiempo==10){
 
 }
 
-if (x==0||x==-200){
+if (y==250){
     para_adelante=true;
-}else if (x==150||x==-50){
+}else if (y==0){
 para_adelante=false;
 }
 
 }
-void Enemigo3::reset(){
-this->x=150;
-    this->y=425;
+void Enemigo6::reset(){
+ this->x=900;
+    this->y=0;
     this->tiempo=0;
     this->cuadro_actual=0;
-    this->para_adelante=false;
+    this->para_adelante=true;
 }

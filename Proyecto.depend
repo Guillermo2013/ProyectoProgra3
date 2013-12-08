@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1386461757 source:c:\users\guillermo sandoval\desktop\progra3\proyecto\agua.cpp
+1386532733 source:c:\users\guillermo sandoval\desktop\progra3\proyecto\agua.cpp
 	"Agua.h"
 
 1386403544 c:\users\guillermo sandoval\desktop\progra3\proyecto\agua.h
@@ -37,49 +37,49 @@
 1386264926 c:\users\guillermo sandoval\desktop\progra3\proyecto\plataforma1.h
 	"Plataforma.h"
 
-1386461755 source:c:\users\guillermo sandoval\desktop\progra3\proyecto\plataforma2.cpp
+1386532804 source:c:\users\guillermo sandoval\desktop\progra3\proyecto\plataforma2.cpp
 	"Plataforma2.h"
 
 1386264831 c:\users\guillermo sandoval\desktop\progra3\proyecto\plataforma2.h
 	"Plataforma.h"
 
-1386461756 source:c:\users\guillermo sandoval\desktop\progra3\proyecto\plataforma3.cpp
+1386532833 source:c:\users\guillermo sandoval\desktop\progra3\proyecto\plataforma3.cpp
 	"Plataforma3.h"
 
 1386222109 c:\users\guillermo sandoval\desktop\progra3\proyecto\plataforma3.h
 	"Plataforma.h"
 
-1386461756 source:c:\users\guillermo sandoval\desktop\progra3\proyecto\plataforma4.cpp
+1386532894 source:c:\users\guillermo sandoval\desktop\progra3\proyecto\plataforma4.cpp
 	"Plataforma4.h"
 
 1386222109 c:\users\guillermo sandoval\desktop\progra3\proyecto\plataforma4.h
 	"Plataforma.h"
 
-1386461757 source:c:\users\guillermo sandoval\desktop\progra3\proyecto\plataforma5.cpp
+1386532720 source:c:\users\guillermo sandoval\desktop\progra3\proyecto\plataforma5.cpp
 	"Plataforma5.h"
 
 1386265233 c:\users\guillermo sandoval\desktop\progra3\proyecto\plataforma5.h
 	"Plataforma.h"
 
-1386461757 source:c:\users\guillermo sandoval\desktop\progra3\proyecto\plataforma6.cpp
+1386532894 source:c:\users\guillermo sandoval\desktop\progra3\proyecto\plataforma6.cpp
 	"Plataforma6.h"
 
 1386222109 c:\users\guillermo sandoval\desktop\progra3\proyecto\plataforma6.h
 	"Plataforma.h"
 
-1386461757 source:c:\users\guillermo sandoval\desktop\progra3\proyecto\plataforma7.cpp
+1386532720 source:c:\users\guillermo sandoval\desktop\progra3\proyecto\plataforma7.cpp
 	"Plataforma7.h"
 
 1386222109 c:\users\guillermo sandoval\desktop\progra3\proyecto\plataforma7.h
 	"Plataforma.h"
 
-1386461757 source:c:\users\guillermo sandoval\desktop\progra3\proyecto\plataforma8.cpp
+1386532720 source:c:\users\guillermo sandoval\desktop\progra3\proyecto\plataforma8.cpp
 	"Plataforma8.h"
 
 1386264831 c:\users\guillermo sandoval\desktop\progra3\proyecto\plataforma8.h
 	"Plataforma.h"
 
-1386464790 source:c:\users\guillermo sandoval\desktop\progra3\proyecto\main.cpp
+1386544853 source:c:\users\guillermo sandoval\desktop\progra3\proyecto\main.cpp
 	"SDL.h"
 	"SDL_image.h"
 	"SDL_ttf.h"
@@ -92,6 +92,9 @@
 	"Enemigo1.h"
 	"Enemigo2.h"
 	"Enemigo3.h"
+	"Enemigo4.h"
+	"Enemigo5.h"
+	"Enemigo6.h"
 	"Personaje.h"
 	"Plataforma.h"
 	"Plataforma1.h"
@@ -104,7 +107,7 @@
 	"Plataforma8.h"
 	"Agua.h"
 
-1386461846 source:c:\users\guillermo sandoval\desktop\progra3\proyecto\enemigo1.cpp
+1386544444 source:c:\users\guillermo sandoval\desktop\progra3\proyecto\enemigo1.cpp
 	"Enemigo1.h"
 
 1386447098 c:\users\guillermo sandoval\desktop\progra3\proyecto\enemigo1.h
@@ -119,15 +122,33 @@
 	"SDL.h"
 	"SDL_image.h"
 
-1386461755 source:c:\users\guillermo sandoval\desktop\progra3\proyecto\enemigo2.cpp
+1386540349 source:c:\users\guillermo sandoval\desktop\progra3\proyecto\enemigo2.cpp
 	"Enemigo2.h"
 
 1386454075 c:\users\guillermo sandoval\desktop\progra3\proyecto\enemigo2.h
 	"Enemigo.h"
 
-1386459253 source:c:\users\guillermo sandoval\desktop\progra3\proyecto\enemigo3.cpp
+1386540748 source:c:\users\guillermo sandoval\desktop\progra3\proyecto\enemigo3.cpp
 	"Enemigo3.h"
 
 1386458021 c:\users\guillermo sandoval\desktop\progra3\proyecto\enemigo3.h
+	"Enemigo.h"
+
+1386541147 source:c:\users\guillermo sandoval\desktop\progra3\proyecto\enemigo4.cpp
+	"Enemigo4.h"
+
+1386477323 c:\users\guillermo sandoval\desktop\progra3\proyecto\enemigo4.h
+	"Enemigo.h"
+
+1386539789 source:c:\users\guillermo sandoval\desktop\progra3\proyecto\enemigo5.cpp
+	"Enemigo5.h"
+
+1386481122 c:\users\guillermo sandoval\desktop\progra3\proyecto\enemigo5.h
+	"Enemigo.h"
+
+1386540313 source:c:\users\guillermo sandoval\desktop\progra3\proyecto\enemigo6.cpp
+	"Enemigo6.h"
+
+1386483897 c:\users\guillermo sandoval\desktop\progra3\proyecto\enemigo6.h
 	"Enemigo.h"
 

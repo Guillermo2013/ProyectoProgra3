@@ -14,6 +14,9 @@ and may not be redistributed without written permission.*/
 #include "Enemigo1.h"
 #include "Enemigo2.h"
 #include "Enemigo3.h"
+#include "Enemigo4.h"
+#include "Enemigo5.h"
+#include "Enemigo6.h"
 #include "Personaje.h"
 #include "Plataforma.h"
 #include "Plataforma1.h"
@@ -37,6 +40,7 @@ SDL_Surface *down = NULL;
 SDL_Surface *left = NULL;
 SDL_Surface *right = NULL;
 SDL_Surface *screen = NULL;
+Mix_Music *music = NULL;
 
 //The event structure
 SDL_Event event;
@@ -184,6 +188,9 @@ int main( int argc, char* args[] )
      enemigos.push_back(new Enemigo1());
      enemigos.push_back(new Enemigo2());
       enemigos.push_back(new Enemigo3());
+      enemigos.push_back(new Enemigo4());
+      enemigos.push_back(new Enemigo5());
+      enemigos.push_back(new Enemigo6());
    std::ofstream escritura_puntaje("puntaje.txt",std::ios::app);
    std::ifstream lectura_puntaje("puntaje.txt");
     int cursor_x=0;
@@ -296,6 +303,14 @@ int main( int argc, char* args[] )
         }
 
         if (jugar==true){
+            for(int i=0;i<enemigos.size();i++){
+              if (enemigos[i]->recibir_ataque(personaje)==10){
+                puntuacion=puntuacion+500;
+                enemigos[i]->x=1000000;
+                enemigos[i]->y=-1000000;
+              }
+
+            }
 
         menu_bool=false;
         nivel_bool=false;
@@ -344,7 +359,6 @@ int main( int argc, char* args[] )
                 puntuacion=0;
            }
 
-
         if (personaje->x==0&&movimiento_de_pantalla==true){
           movimiento_de_pantalla=false;
             personaje->x=0;
@@ -366,6 +380,7 @@ int main( int argc, char* args[] )
            enemigos[i]->x=enemigos[i]->x-200;
 
         }
+
       }
 
 
@@ -480,6 +495,7 @@ int main( int argc, char* args[] )
                switch( event.key.keysym.sym )
                 {
                     case SDLK_SPACE:
+
                         if (personaje->saltar==false){
                         personaje->y--;
                         personaje->y--;
