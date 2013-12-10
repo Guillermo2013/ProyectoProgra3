@@ -79,7 +79,7 @@
 1386264831 c:\users\guillermo sandoval\desktop\progra3\proyecto\plataforma8.h
 	"Plataforma.h"
 
-1386544853 source:c:\users\guillermo sandoval\desktop\progra3\proyecto\main.cpp
+1386657870 source:c:\users\guillermo sandoval\desktop\progra3\proyecto\main.cpp
 	"SDL.h"
 	"SDL_image.h"
 	"SDL_ttf.h"
@@ -107,7 +107,7 @@
 	"Plataforma8.h"
 	"Agua.h"
 
-1386544444 source:c:\users\guillermo sandoval\desktop\progra3\proyecto\enemigo1.cpp
+1386545586 source:c:\users\guillermo sandoval\desktop\progra3\proyecto\enemigo1.cpp
 	"Enemigo1.h"
 
 1386447098 c:\users\guillermo sandoval\desktop\progra3\proyecto\enemigo1.h
@@ -128,25 +128,25 @@
 1386454075 c:\users\guillermo sandoval\desktop\progra3\proyecto\enemigo2.h
 	"Enemigo.h"
 
-1386540748 source:c:\users\guillermo sandoval\desktop\progra3\proyecto\enemigo3.cpp
+1386545586 source:c:\users\guillermo sandoval\desktop\progra3\proyecto\enemigo3.cpp
 	"Enemigo3.h"
 
 1386458021 c:\users\guillermo sandoval\desktop\progra3\proyecto\enemigo3.h
 	"Enemigo.h"
 
-1386541147 source:c:\users\guillermo sandoval\desktop\progra3\proyecto\enemigo4.cpp
+1386545586 source:c:\users\guillermo sandoval\desktop\progra3\proyecto\enemigo4.cpp
 	"Enemigo4.h"
 
 1386477323 c:\users\guillermo sandoval\desktop\progra3\proyecto\enemigo4.h
 	"Enemigo.h"
 
-1386539789 source:c:\users\guillermo sandoval\desktop\progra3\proyecto\enemigo5.cpp
+1386545586 source:c:\users\guillermo sandoval\desktop\progra3\proyecto\enemigo5.cpp
 	"Enemigo5.h"
 
 1386481122 c:\users\guillermo sandoval\desktop\progra3\proyecto\enemigo5.h
 	"Enemigo.h"
 
-1386540313 source:c:\users\guillermo sandoval\desktop\progra3\proyecto\enemigo6.cpp
+1386545567 source:c:\users\guillermo sandoval\desktop\progra3\proyecto\enemigo6.cpp
 	"Enemigo6.h"
 
 1386483897 c:\users\guillermo sandoval\desktop\progra3\proyecto\enemigo6.h

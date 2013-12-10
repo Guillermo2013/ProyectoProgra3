@@ -211,6 +211,7 @@ int main( int argc, char* args[] )
     bool movimiento_de_pantalla=false;
     int tiempo_de_espera_de_ganar=0;
     int saltar=0;
+    int veses=0;
     //Quit flag
     bool quit = false;
 
@@ -399,16 +400,102 @@ int main( int argc, char* args[] )
             apply_surface(0,0,ganador,screen);
             ganar=true;
             tiempo_de_espera_de_ganar++;
+             Mix_Chunk *sound = NULL;		//Pointer to our sound, in memory
+            int channel;				//Channel on which our sound is played
+
+            int audio_rate = 22050;			//Frequency of audio playback
+            Uint16 audio_format = AUDIO_S16SYS; 	//Format of the audio we're playing
+            int audio_channels = 2;			//2 channels = stereo
+            int audio_buffers = 4096;		//Size of the audio buffers in memory
+
+            //Initialize BOTH SDL video and SDL audio
+            if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO) != 0) {
+                printf("Unable to initialize SDL: %s\n", SDL_GetError());
+                return 1;
+            }
+
+            //Initialize SDL_mixer with our chosen audio settings
+            if(Mix_OpenAudio(audio_rate, audio_format, audio_channels, audio_buffers) != 0) {
+                printf("Unable to initialize audio: %s\n", Mix_GetError());
+                exit(1);
+            }
+
+            //Load our WAV file from disk
+            sound = Mix_LoadWAV("gan.wav");
+            if(sound == NULL) {
+                printf("Unable to load WAV file: %s\n", Mix_GetError());
+            }
+
+            //Set the video mode to anything, just need a window
+
+            //Play our sound file, and capture the channel on which it is played
+            channel = Mix_PlayChannel(-1, sound, 0);
+            if(channel == -1) {
+                printf("Unable to play WAV file: %s\n", Mix_GetError());
+            }
+
+            //Wait until the sound has stopped playing
+            while(Mix_Playing(channel) != 0);
+
+            //Release the memory allocated to our sound
+            Mix_FreeChunk(sound);
+
+            //Need to make sure that SDL_mixer and SDL have a chance to clean up
+            Mix_CloseAudio();
         }
         if (vida_easy==0||vida_hard==0||vida_mediun==0){
+
             apply_surface(0,0,perdio,screen);
             perder=true;
              tiempo_de_espera_de_ganar++;
+             Mix_Chunk *sound = NULL;		//Pointer to our sound, in memory
+            int channel;				//Channel on which our sound is played
 
+            int audio_rate = 22050;			//Frequency of audio playback
+            Uint16 audio_format = AUDIO_S16SYS; 	//Format of the audio we're playing
+            int audio_channels = 2;			//2 channels = stereo
+            int audio_buffers = 4096;		//Size of the audio buffers in memory
+
+            //Initialize BOTH SDL video and SDL audio
+            if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO) != 0) {
+                printf("Unable to initialize SDL: %s\n", SDL_GetError());
+                return 1;
+            }
+
+            //Initialize SDL_mixer with our chosen audio settings
+            if(Mix_OpenAudio(audio_rate, audio_format, audio_channels, audio_buffers) != 0) {
+                printf("Unable to initialize audio: %s\n", Mix_GetError());
+                exit(1);
+            }
+
+            //Load our WAV file from disk
+            sound = Mix_LoadWAV("muerte.wav");
+            if(sound == NULL) {
+                printf("Unable to load WAV file: %s\n", Mix_GetError());
+            }
+
+            //Set the video mode to anything, just need a window
+
+            //Play our sound file, and capture the channel on which it is played
+            channel = Mix_PlayChannel(-1, sound, 0);
+            if(channel == -1) {
+                printf("Unable to play WAV file: %s\n", Mix_GetError());
+            }
+
+            //Wait until the sound has stopped playing
+            while(Mix_Playing(channel) != 0);
+
+            //Release the memory allocated to our sound
+            Mix_FreeChunk(sound);
+
+            //Need to make sure that SDL_mixer and SDL have a chance to clean up
+            Mix_CloseAudio();
         }
          apply_surface(105,0,puntuacion_texto,screen);
 
-        if (tiempo_de_espera_de_ganar==50){
+
+        if (tiempo_de_espera_de_ganar==2){
+
             escritura_puntaje.seekp(escritura_puntaje.eof());
             escritura_puntaje<<puntuacion<<std::endl;
 
@@ -480,6 +567,7 @@ int main( int argc, char* args[] )
        }
        }
          if (personaje->saltar==false&&personaje->y<=435){
+            Mix_CloseAudio();
             personaje->y++;
          }
 
@@ -495,11 +583,27 @@ int main( int argc, char* args[] )
                switch( event.key.keysym.sym )
                 {
                     case SDLK_SPACE:
+                         if( Mix_OpenAudio( 22050, MIX_DEFAULT_FORMAT, 2, 4096 ) == -1 )
+                    {
+                        return 1;
+                    }
+
+                    music = Mix_LoadMUS( "salto.wav" );
+
+                    if( music == NULL )
+                    {
+                        return 1;
+                    }
+
+              //  bool first_time = true, first_it = true;
+                  Mix_PlayMusic(music,-1);
+
 
                         if (personaje->saltar==false){
                         personaje->y--;
                         personaje->y--;
                         personaje->saltar=true;
+
 
                         }
 

@@ -37,7 +37,7 @@ return -1;
 return 0;
 }
 void Enemigo2::reset(){
-  this->x=690;
-   this->y=150;
+  this->x=700;
+   this->y=40;
    this->cuadro_actual=0;
 }
