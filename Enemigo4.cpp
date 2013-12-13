@@ -21,19 +21,19 @@ int Enemigo4::atacar(Personaje*personaje){
 if (personaje->x+30==x&&personaje->y+25>y&&personaje->y+25<y+32){
      personaje->x=0;
     personaje->y=435;
-    personaje->cuadro_actual=0;
+
     reset();
     return -1;
 }else if (personaje->x-10==x&&personaje->y+25>y&&personaje->y+25<y+32){
  personaje->x=0;
     personaje->y=435;
-    personaje->cuadro_actual=0;
+
     reset();
 return -1;
 }else if (personaje->x+18>x&&personaje->x<x+60&&personaje->y==y+20){
  personaje->x=0;
     personaje->y=435;
-    personaje->cuadro_actual=0;
+
     reset();
 return -1;
 }

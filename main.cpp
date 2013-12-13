@@ -172,6 +172,10 @@ int main( int argc, char* args[] )
     SDL_Surface* corazon=load_image("Assests/corazon.png");
     SDL_Surface* ganador=load_image("Assests/ganador.png");
     SDL_Surface* perdio=load_image("Assests/perdedor.png");
+    SDL_Surface* pausa_imagen=load_image("Assests/pausa_imagen.png");
+    SDL_Surface* cursor_pausa=load_image("Assests/cursor_pausa.png");
+     SDL_Surface* seleccion_personaje=load_image("Assests/seleccion_personaje.png");
+     SDL_Surface* seleccion_cursor=load_image("Assests/seleccion_cursor.png");
     Personaje* personaje=new Personaje();
 
     std::vector<Plataforma*>plataformas;
@@ -193,6 +197,7 @@ int main( int argc, char* args[] )
       enemigos.push_back(new Enemigo6());
    std::ofstream escritura_puntaje("puntaje.txt",std::ios::app);
    std::ifstream lectura_puntaje("puntaje.txt");
+
     int cursor_x=0;
     int score=0;
     int cursor_nivel_x=0;
@@ -206,7 +211,12 @@ int main( int argc, char* args[] )
     bool ganar=false;
     bool perder=false;
     bool nivel_bool=true;
+    bool seleccion_caracter=true;
     bool jugar=false;
+    bool pausa=false;
+    bool seleccion_salir=false;
+    int cursor_pausa_y=0;
+    int cursor_personaje_x=0;
     int menu_x=0;
     bool movimiento_de_pantalla=false;
     int tiempo_de_espera_de_ganar=0;
@@ -278,32 +288,39 @@ int main( int argc, char* args[] )
 
 
         }
-        if (menu_bool==false&&nivel_bool==true&&cursor_x==2){
+        if (menu_bool==false&&nivel_bool==false&&jugar==false&&seleccion_caracter==true&&cursor_x==0){
+            if (cursor_personaje_x>1){
+                cursor_personaje_x=0;
+            }else if (cursor_personaje_x==-1){
+            cursor_personaje_x=1;
+            }
+            apply_surface( 0, 0, background, screen );
+            apply_surface( 0, 0,seleccion_personaje, screen );
+            apply_surface( cursor_personaje_x*250+185, 185, seleccion_cursor, screen );
+
+        }
+        if (menu_bool==false&&cursor_x==2&&nivel_bool==true){
+              cursor_x=2;
+              menu_bool=false;
                apply_surface( 0, 0, background, screen );
                 apply_surface( 0, 0, high_score, screen );
 
-            int score=-999999;
-             lectura_puntaje.seekg(0);
-            while(!lectura_puntaje.eof())
-                {
-                    int puntos;
-                    lectura_puntaje>>puntos;
-                    if(score<puntos)
-                    {
-                        score=puntos;
-                    }
-                }
-
+            lectura_puntaje.seekg(0);
+             for(int i=0;i<5;i++){
+            if (!lectura_puntaje.eof()){
+            lectura_puntaje>>score;
              SDL_Surface * score_texto = TTF_RenderText_Solid( font,toString(score).c_str(), textColor );
-             apply_surface(350,250,score_texto,screen);
+             apply_surface(350,i*55+100,score_texto,screen);
 
+            }
+           }
         }
-
         if (menu_bool==false&&nivel_bool==true&&cursor_x==3){
         exit(0);
         }
 
-        if (jugar==true){
+        if (jugar==true&&cursor_x==0){
+
             for(int i=0;i<enemigos.size();i++){
               if (enemigos[i]->recibir_ataque(personaje)==10){
                 puntuacion=puntuacion+500;
@@ -334,12 +351,12 @@ int main( int argc, char* args[] )
           enemigos[x]->Dibujar(screen,enemigos[x]->cuadro_actual);
         }
 
-        for (int x=0;x<enemigos.size();x++){
+        for (int x=0;x<enemigos.size()&&pausa==false;x++){
            enemigos[x]->logica();
         }
 
       for(int i=0;i<enemigos.size();i++)
-      if (enemigos[i]->atacar(personaje)==-1){
+      if (enemigos[i]->atacar(personaje)==-1&&pausa==false){
            if (cursor_nivel_x==0){
               vida_easy--;
               if (puntuacion>500)
@@ -395,6 +412,10 @@ int main( int argc, char* args[] )
         else if (cursor_nivel_x==2)
             for (int x=0;x<vida_hard;x++)
         apply_surface(x*35,0,corazon,screen);
+          if (pausa==true){
+                    apply_surface(0,0,pausa_imagen,screen);
+                     apply_surface(270,(cursor_pausa_y*110)+190,cursor_pausa,screen);
+                }
 
         if (personaje->x>puerta_x&&personaje->x<puerta_x+60&&personaje->y+50>puerta_y&&personaje->y+50<puerta_y+49){
             apply_surface(0,0,ganador,screen);
@@ -494,15 +515,17 @@ int main( int argc, char* args[] )
          apply_surface(105,0,puntuacion_texto,screen);
 
 
-        if (tiempo_de_espera_de_ganar==2){
+        if (tiempo_de_espera_de_ganar==2||seleccion_salir==true){
+            if (puntuacion>0){
 
             escritura_puntaje.seekp(escritura_puntaje.eof());
             escritura_puntaje<<puntuacion<<std::endl;
 
+            }
             escritura_puntaje.close();
              tiempo_de_espera_de_ganar=0;
              personaje->x=0;
-             personaje->y=450;
+             personaje->y=430;
              puntuacion=0;
              vida_easy=3;
              vida_mediun=2;
@@ -512,6 +535,8 @@ int main( int argc, char* args[] )
              perder=false;
              nivel_bool=true;
              jugar=false;
+             cursor_pausa_y=0;
+             seleccion_salir=false;
         if (personaje->x==0&&movimiento_de_pantalla==true){
             movimiento_de_pantalla=false;
             menu_x+=200;
@@ -554,7 +579,7 @@ int main( int argc, char* args[] )
            enemigos[i]->x=enemigos[i]->x-200;
 
         }
-       if (personaje->saltar==true){
+       if (personaje->saltar==true&&pausa==false){
        personaje->y--;
        saltar++;
        personaje->y--;
@@ -566,7 +591,7 @@ int main( int argc, char* args[] )
         saltar=0;
        }
        }
-         if (personaje->saltar==false&&personaje->y<=435){
+         if (personaje->saltar==false&&personaje->y<=435&&pausa==false){
             Mix_CloseAudio();
             personaje->y++;
          }
@@ -582,7 +607,13 @@ int main( int argc, char* args[] )
 
                switch( event.key.keysym.sym )
                 {
+                case SDLK_p:
+                    if (jugar==true){
+                        pausa=true;
+                    }
+                    break;
                     case SDLK_SPACE:
+                         if (pausa==false){
                          if( Mix_OpenAudio( 22050, MIX_DEFAULT_FORMAT, 2, 4096 ) == -1 )
                     {
                         return 1;
@@ -597,9 +628,9 @@ int main( int argc, char* args[] )
 
               //  bool first_time = true, first_it = true;
                   Mix_PlayMusic(music,-1);
+                         }
 
-
-                        if (personaje->saltar==false){
+                        if (personaje->saltar==false&&pausa==false){
                         personaje->y--;
                         personaje->y--;
                         personaje->saltar=true;
@@ -609,32 +640,49 @@ int main( int argc, char* args[] )
 
                     break;
                     case SDLK_UP:
-                        if (jugar==true&&ganar==false&&perder==false){
-                     personaje->y--;
-                     personaje->y--;
+                        if (pausa==true){
+                     cursor_pausa_y--;
+                     if (cursor_pausa_y<0){
+                        cursor_pausa_y=1;
+                     }
                         }
+
                     break;
                     case SDLK_DOWN:
-                        if (jugar==true&&ganar==false&&perder==false){
-                     personaje->y++;
-                     personaje->y++;
+                        if (pausa==true){
+                     cursor_pausa_y++;
+                     if (cursor_pausa_y>1){
+                        cursor_pausa_y=0;
+                     }
                         }
                     break;
                     case SDLK_ESCAPE:
                      cursor_x=0;
                         nivel_bool=true;
                         menu_bool=true;
+                        seleccion_caracter=true;
 
                     break;
                     case SDLK_RETURN:
                        if (menu_bool==true){
                         menu_bool=false;
-                       }else if (menu_bool==false&&nivel_bool==true){
+                       }else if (menu_bool==false&&nivel_bool==true&&cursor_x==0){
                         nivel_bool=false;
+                       }else if(menu_bool==false&&nivel_bool==false&&seleccion_caracter==true&&cursor_x==0){
+                       seleccion_caracter=false;
 
-                       }else if (menu_bool==false&&nivel_bool==false&&jugar==false){
+                       }else if (menu_bool==false&&nivel_bool==false&&seleccion_caracter==false&&jugar==false){
                        jugar=true;
+                       if (cursor_personaje_x==0){
+                        personaje->cuadro_actual==0;
+                       }else if (cursor_personaje_x==1){
+                       personaje->cuadro_actual=6;
+                       }
 
+                       }else if (cursor_pausa_y==1){
+                       seleccion_salir=true;
+                       }else if (pausa==true&&cursor_pausa_y==0){
+                       pausa=false;
                        }
 
                     break;
@@ -642,28 +690,40 @@ int main( int argc, char* args[] )
 
                          if (menu_bool==true){
                         cursor_x++;
-                       }else if(nivel_bool==true){
+                       }else if(nivel_bool==true&&menu_bool==false&&cursor_x==0){
                         cursor_nivel_x++;
-                       }else if (jugar==true&&ganar==false&&perder==false){
+                        }else if (seleccion_caracter==true&&nivel_bool==false&&menu_bool==false&&cursor_x==0){
+                       cursor_personaje_x++;
+                       }else if (jugar==true&&ganar==false&&perder==false&&pausa==false){
                        personaje->tiempo++;
                        personaje->x++;
 
                         if (personaje->tiempo==5&&personaje->saltar==false){
-                            if (personaje->cuadro_actual==0){
+                            if (personaje->cuadro_actual==0&&cursor_personaje_x==0){
                                 personaje->cuadro_actual=1;
                             }
-
+                                if (personaje->cuadro_actual==6&&cursor_personaje_x==1){
+                                personaje->cuadro_actual=7;
+                            }
                             }
                             if (personaje->tiempo==10&&personaje->saltar==false){
-                                if (personaje->cuadro_actual==1)
+                                if (personaje->cuadro_actual==1&&cursor_personaje_x==0)
                                 personaje->cuadro_actual=0;
+                                if (personaje->cuadro_actual==7&&cursor_personaje_x==1)
+                                personaje->cuadro_actual=6;
                             personaje->tiempo=0;
 
-                            }if (personaje->saltar==true){
+                            }if (personaje->saltar==true&&cursor_personaje_x==0){
                                 personaje->cuadro_actual=4;
                                 personaje->tiempo=0;
-                            }else if (personaje->saltar==false&&personaje->tiempo==0){
+                            }else if (personaje->saltar==false&&personaje->tiempo==0&&cursor_personaje_x==0){
                             personaje->cuadro_actual=0;
+                            }
+                            if (personaje->saltar==true&&cursor_personaje_x==1){
+                                personaje->cuadro_actual=10;
+                                personaje->tiempo=10;
+                            }else if (personaje->saltar==false&&personaje->tiempo==0&&cursor_personaje_x==1){
+                            personaje->cuadro_actual=6;
                             }
                        puntuacion++;
                        }
@@ -673,31 +733,44 @@ int main( int argc, char* args[] )
 
                         if (menu_bool==true){
                         cursor_x--;
-                       }else if(nivel_bool==true){
+                       }else if(nivel_bool==true&&menu_bool==false&&cursor_x==0){
                         cursor_nivel_x--;
-                       }else if (jugar==true&&ganar==false&&perder==false){
+                        }else if (seleccion_caracter==true&&nivel_bool==false&&menu_bool==false&&cursor_x==0){
+                       cursor_personaje_x--;
+                       }else if (jugar==true&&ganar==false&&perder==false&&pausa==false){
 
                         personaje->tiempo++;
                        personaje->x--;
 
                         if (personaje->tiempo==5&&personaje->saltar==false){
-                            if (personaje->cuadro_actual==2){
+                            if (personaje->cuadro_actual==2&&cursor_personaje_x==0){
                                 personaje->cuadro_actual=3;
                             }
-
+                            if (personaje->cuadro_actual==8&&cursor_personaje_x==1){
+                                personaje->cuadro_actual=9;
+                            }
                             }
                             if (personaje->tiempo==10&&personaje->saltar==false){
-                                if (personaje->cuadro_actual==3)
+                                if (personaje->cuadro_actual==3&&cursor_personaje_x==0)
                                 personaje->cuadro_actual=2;
+                                if (personaje->cuadro_actual==9&&cursor_personaje_x==1)
+                                personaje->cuadro_actual=8;
                             personaje->tiempo=0;
 
                             }
-                             if (personaje->saltar==true){
+                             if (personaje->saltar==true&&cursor_personaje_x==0){
                                 personaje->cuadro_actual=5;
                                  personaje->tiempo=0;
 
-                            }else if(personaje->saltar==false&&personaje->tiempo==0)
+                            }else if(personaje->saltar==false&&personaje->tiempo==0&&cursor_personaje_x==0)
                             personaje->cuadro_actual=2;
+
+                            if (personaje->saltar==true&&cursor_personaje_x==1){
+                                personaje->cuadro_actual=11;
+                                 personaje->tiempo=0;
+
+                            }else if(personaje->saltar==false&&personaje->tiempo==0&&cursor_personaje_x==1)
+                            personaje->cuadro_actual=8;
 
                        puntuacion--;
                        }
